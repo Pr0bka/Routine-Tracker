@@ -3,7 +3,9 @@ import { auth, signOut } from '../firebaseSetup';
 function HomePage() {
   return (
     <div>
-      <button onClick={() => signOut(auth!)}>ну и зачем я сюда пришел</button>
+      <button type='button' onClick={() => signOut(auth!)}>
+        ну и зачем я сюда пришел
+      </button>
     </div>
   );
 }
