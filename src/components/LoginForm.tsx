@@ -1,4 +1,5 @@
 import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { Box, Stack, Typography } from '@mui/material';
 import GoogleButton from 'react-google-button';
 import { auth } from '../firebaseSetup';
 
@@ -16,7 +17,6 @@ function LoginForm() {
         const { user: googleUser } = result;
         console.warn(JSON.stringify(googleUser));
         console.warn(JSON.stringify(token));
-
         // IdP data available using getAdditionalUserInfo(result)
         // ...
       })
@@ -34,7 +34,21 @@ function LoginForm() {
         console.warn(JSON.stringify(errMessage));
       });
   };
-  return <GoogleButton onClick={signInWithGoogle} />;
+  return (
+    <Box display='flex' justifyContent='center' alignItems='center'>
+      <Stack
+        spacing={5}
+        direction='column'
+        justifyContent='center'
+        alignItems='center'
+      >
+        <Typography fontSize={150} fontFamily='Zalupa'>
+          Routine Tracker
+        </Typography>
+        <GoogleButton onClick={signInWithGoogle} />
+      </Stack>
+    </Box>
+  );
 }
 
 export default LoginForm;

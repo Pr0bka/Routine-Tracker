@@ -7,6 +7,12 @@
   pointer-events: none;
 }
 
+@font-face {
+  font-family: "Zalupa";   /*Can be any text*/
+  src: local("GreatVibes"),
+    url("./fonts/GreatVibes.ttf") format("truetype");
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
