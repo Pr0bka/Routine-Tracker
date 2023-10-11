@@ -1,5 +1,5 @@
 import { auth, signOut } from '../firebaseSetup';
-import registerUser from '../queries/user';
+import { registerUser } from '../queries/user';
 
 function HomePage() {
   return (
@@ -7,9 +7,17 @@ function HomePage() {
       <button type='button' onClick={() => signOut(auth!)}>
         ну и нахуй я сюда пришел
       </button>
-      <button type='button' onClick={registerUser}>
+      <button type='button' onClick={() => registerUser}>
         КАЛЛекция
       </button>
+      {/* <button
+        type='button'
+        onClick={async () => {
+          console.warn(user);
+        }}
+      >
+        user: 
+      </button> */}
     </div>
   );
 }

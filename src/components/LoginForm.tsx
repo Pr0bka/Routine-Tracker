@@ -20,9 +20,6 @@ function LoginForm() {
         // IdP data available using getAdditionalUserInfo(result)
         // ...
       })
-      .then(() => {
-        console.log('The user has been created');
-      })
       .catch((err: any) => {
         console.log('The user already exists');
         // Handle Errors here.

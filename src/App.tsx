@@ -5,10 +5,17 @@ import { User } from 'firebase/auth';
 import LoginPage from './Pages/LoginPage';
 import HomePage from './Pages/HomePage';
 import { initializeFirebase, auth, onAuthStateChanged } from './firebaseSetup';
+import { getUser } from './queries/user';
 
 initializeFirebase();
 
 function App() {
+  const [dbUser, setDbUser] = useState<any>();
+  useEffect(() => {
+    getUser().then((result) => {
+      setDbUser(result);
+    });
+  }, [dbUser]);
   const [user, setUser] = useState<User | null>();
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-shadow
@@ -21,7 +28,13 @@ function App() {
     });
   }, []);
 
-  return <div>{user ? <HomePage /> : <LoginPage />}</div>;
+  if (!user) {
+    return <LoginPage />;
+  }
+  if (!dbUser) {
+    return <SignUp />;
+  }
+  return <HomePage />;
 }
 
 export default App;
